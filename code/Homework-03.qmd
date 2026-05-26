@@ -14,5 +14,30 @@ format: pdf
 library(tidyverse)
 library(janitor)
 library(readxl)
+library(here)
 ```
+
+```{r}
+#| label: data
+
+# store kelp data as an object called kelp
+kelp <- read_csv(here("data","temp-kelp.csv"))
+egg_data <- read_csv(here("data", "personal-data-project - Sheet1.csv"))
+```
+
+# Problems
+
+## Problem 1: Giant Kelp Fronds
+
+### a. 
+
+To determine the strength of the relationship between temperature and elongation rate, you could do a Pearson's correlation and a Spearman rank correlation. A Pearson’s correlation is parametric and is best for understanding the strength of the correlation between variables when
+there is a linear relationship between continuous variables. A Spearman’s rank correlation is non-parametric and useful for understanding the strength of the correlation between variables that show a
+monotomic relationship between variables.
+
+
+
+
+
+
 

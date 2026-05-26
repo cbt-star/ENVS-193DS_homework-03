@@ -14,5 +14,21 @@ format: pdf
 library(tidyverse)
 library(janitor)
 library(readxl)
+library(here)
 ```
+
+```{r}
+#| label: data
+
+# store kelp data as an object called kelp
+kelp <- read_csv(here("data","temp-kelp.csv"))
+egg_data <- read_csv(here("data", "personal-data-project - Sheet1.csv"))
+```
+
+
+
+
+
+
+
 

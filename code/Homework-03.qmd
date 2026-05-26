@@ -15,6 +15,7 @@ library(tidyverse)
 library(janitor)
 library(readxl)
 library(here)
+library(ggeffects)
 ```
 
 ```{r}
@@ -22,6 +23,7 @@ library(here)
 
 # store kelp data as an object called kelp
 kelp <- read_csv(here("data","temp-kelp.csv"))
+# store egg data as an object called egg_data
 egg_data <- read_csv(here("data", "personal-data-project - Sheet1.csv"))
 ```
 
@@ -29,11 +31,59 @@ egg_data <- read_csv(here("data", "personal-data-project - Sheet1.csv"))
 
 ## Problem 1: Giant Kelp Fronds
 
-### a. 
+### a. An appropriate test
 
 To determine the strength of the relationship between temperature and elongation rate, you could do a Pearson's correlation and a Spearman rank correlation. A Pearson’s correlation is parametric and is best for understanding the strength of the correlation between variables when
 there is a linear relationship between continuous variables. A Spearman’s rank correlation is non-parametric and useful for understanding the strength of the correlation between variables that show a
 monotomic relationship between variables.
+
+### b. Create a visualization
+
+```{r}
+#| label: scatterplot
+
+ggplot(data = kelp,
+       aes(x = temp_c,
+           y = kelp_elong)) +
+  geom_point(color = "darkgreen",
+             alpha = 0.6) + 
+  labs(x = "Ocean Temperature(C)",
+       y = expression(paste("Predicted Elongation Rate (cm ", day^-1,")")),
+       title = "Kelp elongation rate is faster in colder waters") + 
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+```{r}
+#| label: scatterplot-plus
+
+kelp_model <- lm(kelp_elong ~ temp_c, data = kelp) 
+kelp_predict <- ggpredict(kelp_model, terms = "temp_c")
+# base layer: ggplot
+ggplot(data = kelp_predict, 
+       aes(x = x, # x-axis: x
+           y = predicted # y-axis: predicted 
+)) +
+  # 1st layer: geom_point to show raw data points
+  geom_point(data = kelp, 
+             aes(x = temp_c,
+                 y = kelp_elong, color = "darkgreen", alpha = 0.5),
+             color = "darkgreen", # point color = dark green
+             alpha = 0.5) + # make points slightly transparent
+  geom_ribbon(aes(ymin = conf.low,
+                  ymax = conf.high),
+              fill = "lightgreen",
+              alpha = 0.3) + 
+  geom_line(color = "darkgreen") +
+  labs(x = "Ocean Temperature (C)",
+       y = expression(paste("Predicted Elongation Rate (cm ", day^-1,")")),
+       title = "Colder ocean temepratures predict faster elongation rate") + 
+  theme_bw()
+```
+
+```{r}
+
+```
 
 
 

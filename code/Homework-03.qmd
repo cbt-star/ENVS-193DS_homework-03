@@ -3,6 +3,9 @@ title: "Homework-03"
 author: "Cassidy Thorpe"
 date: "2026-05-26"
 format: pdf
+execute:
+  message: false
+  warning: false
 ---
 
 # Set Up
@@ -42,48 +45,83 @@ monotomic relationship between variables.
 ```{r}
 #| label: scatterplot
 
-ggplot(data = kelp,
-       aes(x = temp_c,
-           y = kelp_elong)) +
-  geom_point(color = "darkgreen",
-             alpha = 0.6) + 
+# base layer: ggplot
+ggplot(data = kelp, # use kelp data frame
+       aes(x = temp_c, # x-axis: temperature (C)
+           y = kelp_elong)) + # y-axis: kelp elongation rate (cm/day)
+  # 1st layer: show raw data points
+  geom_point(color = "darkgreen", # points = dark green
+             alpha = 0.6) + # points = slightly transparent
+  # label and and y axes
   labs(x = "Ocean Temperature(C)",
        y = expression(paste("Predicted Elongation Rate (cm ", day^-1,")")),
+       # add title 
        title = "Kelp elongation rate is faster in colder waters") + 
+  # change theme
   theme_bw() +
+  # remove legend
   theme(legend.position = "none")
 ```
 
-```{r}
-#| label: scatterplot-plus
+### c. Check assumptions and run test
 
+```{r}
+#| label: model
+
+# create new object called kelp model to store linear model
+# function: lm
+# formula: dependent ~ independent, data = data frame
 kelp_model <- lm(kelp_elong ~ temp_c, data = kelp) 
+# create 2x2 grid to show diagnostic plot
+par(mfrow = c(2,2))
+# show diagnostic plots
+plot(kelp_model)
+```
+
+The QQ residuals plot shows the data points following the line. This suggests the distribution of the residuals is normal. 
+The residuals vs. fitted and scale locations plots don't seem to show a pattern. The data seems to be randomly and evenly distributed  which indicates that the residuals are homoscedastic. 
+The residuals vs leverage plot does not show points outside of the dashed lines which indcates that there are no outliers influencing the model. 
+
+```{r}
+#| label: summary
+
+# show summary of linear model
+summary(kelp_model)
+```
+
+```{r}
+#| label: visualize-model-prediction
+
+# create new object to store predictions of the model
 kelp_predict <- ggpredict(kelp_model, terms = "temp_c")
 # base layer: ggplot
-ggplot(data = kelp_predict, 
+ggplot(data = kelp_predict, # use predictions data frame
        aes(x = x, # x-axis: x
            y = predicted # y-axis: predicted 
 )) +
   # 1st layer: geom_point to show raw data points
   geom_point(data = kelp, 
              aes(x = temp_c,
-                 y = kelp_elong, color = "darkgreen", alpha = 0.5),
+                 y = kelp_elong), #
              color = "darkgreen", # point color = dark green
              alpha = 0.5) + # make points slightly transparent
-  geom_ribbon(aes(ymin = conf.low,
-                  ymax = conf.high),
+  # 2nd layer: ribbon to show 95% CI 
+  geom_ribbon(aes(ymin = conf.low, # lower bound of 95% CI
+                  ymax = conf.high), # upper bound of 95% CI
               fill = "lightgreen",
-              alpha = 0.3) + 
+              alpha = 0.3) + # make ribbon transparent
+  # 3rd layer: line representing model predictions
   geom_line(color = "darkgreen") +
+  # relabel x and y axes and add title
   labs(x = "Ocean Temperature (C)",
        y = expression(paste("Predicted Elongation Rate (cm ", day^-1,")")),
        title = "Colder ocean temepratures predict faster elongation rate") + 
+  # change theme
   theme_bw()
 ```
 
-```{r}
 
-```
+
 
 
 

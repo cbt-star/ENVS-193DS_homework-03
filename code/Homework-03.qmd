@@ -65,7 +65,7 @@ ggplot(data = kelp, # use kelp data frame
 
 ### c. Check assumptions and run test
 
-**Run Test**
+**Create Linear Model**
 
 ```{r}
 #| label: model
@@ -74,6 +74,14 @@ ggplot(data = kelp, # use kelp data frame
 # function: lm
 # formula: dependent ~ independent, data = data frame
 kelp_model <- lm(kelp_elong ~ temp_c, data = kelp) 
+```
+
+```{r}
+#| label: summary
+
+# show summary of linear model
+summary(kelp_model)
+flextable::as_flextable(kelp_model)
 ```
 
 **Check Assumptions**
@@ -91,49 +99,19 @@ The QQ residuals plot shows the data points following the line. This suggests th
 The residuals vs. fitted and scale locations plots don't seem to show a pattern. The data seems to be randomly and evenly distributed  which indicates that the residuals are homoscedastic. 
 The residuals vs leverage plot does not show points outside of the dashed lines which indcates that there are no outliers influencing the model. 
 
-**Summary** 
+**Run Test**
 
 ```{r}
-#| label: summary
 
-# show summary of linear model
-summary(kelp_model)
-```
-
-```{r}
-#| label: visualize-model-prediction
-
-# create new object to store predictions of the model
-kelp_predict <- ggpredict(kelp_model, terms = "temp_c")
-# base layer: ggplot
-ggplot(data = kelp_predict, # use predictions data frame
-       aes(x = x, # x-axis: x
-           y = predicted # y-axis: predicted 
-)) +
-  # 1st layer: geom_point to show raw data points
-  geom_point(data = kelp, 
-             aes(x = temp_c,
-                 y = kelp_elong), #
-             color = "darkgreen", # point color = dark green
-             alpha = 0.5) + # make points slightly transparent
-  # 2nd layer: ribbon to show 95% CI 
-  geom_ribbon(aes(ymin = conf.low, # lower bound of 95% CI
-                  ymax = conf.high), # upper bound of 95% CI
-              fill = "lightgreen",
-              alpha = 0.3) + # make ribbon transparent
-  # 3rd layer: line representing model predictions
-  geom_line(color = "darkgreen") +
-  # relabel x and y axes and add title
-  labs(x = "Ocean Temperature (C)",
-       y = expression(paste("Predicted Elongation Rate (cm ", day^-1,")")),
-       title = "Colder ocean temepratures predict faster elongation rate") + 
-  # change theme
-  theme_bw()
+kelp_cor <- cor.test(kelp$temp_c, kelp$kelp_elong, method = "pearson")
+show(kelp_cor)
 ```
 
 ### d. Results communication
 
+To evaluate the strength of the relationship between temperature and kelp frond elongation, I used Pearson's correlation (r). This test is a good choice because both ocean temperature and elongation rate are continuous variables, and the diagnostic checks show that the data satisfies the assumptions of normality and linearity. I suspect a linear relationship between ocean temperature and kelp frond elongation rate
 
+I found a strong negative  relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.7, t(30) = -5.189, p < 0.001, $\alpha$ = 0.05).
 
 
 

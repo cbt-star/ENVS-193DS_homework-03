@@ -278,3 +278,26 @@ ggplot(data = egg_predict, # use predictions data frame
 
 **Figure 2.** Relationship between daily meat consumption and the number of eggs eaten. As the number of daily meat servings increase, the number of eggs consumed decreases. Individual daily observations are represented by orange points. The red solid line indicated the ordinary least squares linear regression trend. The orange ribbon represents the 95% confidence interval. 
 
+## Problem 4: Statistical critique 
+
+### a. 
+
+The authors are using an ANOVA to assess the effect of clearing on floral resources available for pollinators and on pollinator communities. The ANOVA
+compares the variance within the cleared plots to the variance between the cleared and uncleared plots to assess whether or not there is a significant difference in floral resources and arthropods
+between the two treatments.
+
+```{r}
+#| label: show-boxplot
+
+knitr::include_graphics(here("data","pollinator-boxplot.png.png"))
+```
+
+**Figure 1:** “Boxplots of A) pollinator abundance, B) pollinator richness, C) Shannon index and
+D) Simpson index for sampling-time (July, August) and treatment (C= cleared, NC=
+not cleared).”
+
+### b. 
+
+The figure represents the statistics in the figure reasonably clearly. It is split up into 4 sections. Each section compares a difference dependent variable to the treatment. Within each section there are two facets - one that contains data for July and one that contains data from August. The axes are logically positioned. On the x-axis is the treatment (cleared or non-cleared land) and on the y-axis is A) pollinator abundance, B) pollinator richness, C) Shannon index, D) Simpson index. Basically, the figure is comparing the pollinator presence and the treatments. The boxplots show the median and interquartile rangebut no underlying data is shown
+
+

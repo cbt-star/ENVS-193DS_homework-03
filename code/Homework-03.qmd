@@ -63,7 +63,7 @@ ggplot(data = kelp, # use kelp data frame
   theme(legend.position = "none")
 ```
 
-### c. Check assumptions and run test
+### c. Check  and run test
 
 **Create Linear Model**
 
@@ -189,7 +189,7 @@ ggplot(data = egg_data_clean,
   # make the individual dots visible but still within their category (0.1)
   # make the points transparent enough to see if they overlap
   geom_jitter(width = 0.1,
-                alpha = 0.7) +
+              alpha = 0.7) +
   # change boxplot color
   # change point color
   scale_fill_brewer(palette = "Accent") +
@@ -197,52 +197,26 @@ ggplot(data = egg_data_clean,
   # label x and y axes
   # add title
   labs(x = "School Day",
-         y = "Number of Eggs Eaten",
-         title = "Effect of Going to School on the Number of Eggs I Eat") +
+       y = "Number of Eggs Eaten",
+       title = "Effect of Going to School on the Number of Eggs I Eat",
+       subtitle = "Date of last collection: 2026-05-26") +
   # change the theme
   theme_light() +
 # remove the legend
 theme(legend.position = "none")
 ```
 
-```{r}
-#| label: egg-data-visualization-2
+**Figure 1.** Distribution of the daily number of eggs consumed on days with and without school. The green represents the number of eggs eaten on non-school days. The purple represents the number of eggs eaten on school days. Individuals data points are shown as circles in their respective color. The tops of both boxes represent the median and 75th percentile and the bottoms limits of the boxes represent the 25th percentile. The whiskers indicate points 1.5 times beyond the interquartile range. 
 
-# base layer: ggplot
-# x-axis: meat consumption
-# y-axis: egg consumption
-ggplot(data = egg_data_clean,
-        aes(x = servings_meat_eaten,
-            y = number_eggs_eaten))+
-  # 1st layer: geom_point for a scatterplot
-  # color points by the number of servings of meat eaten
-  # make the points size 3
-  geom_point(aes(color = servings_meat_eaten),
-                 size = 3) +
-  # 2nd layer: geom_smooth for a trend line
-  # tell geom_smooth to make a straight line, not a squiggle
-  # make the line black
-  # don't show the standard error
-  geom_smooth(method = "lm",
-              color = "black",
-              se = FALSE) +
-  # change color scheme for continuous variables
-  scale_color_viridis_c() +
-  # label x and y axes
-  # add title
-  labs(x = "Number of Servings of Meat Eaten",
-       y = "Number of Eggs Eaten",
-       title = "Effect of Eating Meat on Egg Consumption") +
-  # change theme
-  theme_light() +
-# remove legend
-theme(legend.position = "none")
-
-```
+**Create egg linear model**
 
 ```{r}
-#| label: egg-summary
+#| label: egg-model
 
+# create new object to store linear model
+# formula: lm(dependent ~ independent, data = data frame)
+egg_model <- lm(number_eggs_eaten ~ servings_meat_eaten, 
+                data = egg_data_clean)
 # show summary of linear model
 summary(egg_model)
 ```
@@ -263,8 +237,6 @@ plot(egg_model)
 ```{r}
 #| label: linear-egg-model
 
-egg_model <- lm(number_eggs_eaten ~ servings_meat_eaten, 
-                data = egg_data_clean)
 # create new object to store predictions of the model
 egg_predict <- ggpredict(egg_model, terms = "servings_meat_eaten")
 # base layer: ggplot
@@ -288,7 +260,12 @@ ggplot(data = egg_predict, # use predictions data frame
   # relabel x and y axes and add title
   labs(x = "Servings of Meat Eaten",
        y = "Number of Eggs Eaten",
-       title = "Increased meat consumption predicts decreased egg consumption") + 
+       title = "Increased meat consumption predicts decreased
+       egg consumption",
+       subtitle = "Date of last collection: 2026-05-26") + 
   # change theme
   theme_bw()
 ```
+
+**Figure 2.** Relationship between daily meat consumption and the number of eggs eaten. As the number of daily meat servings increase, the number of eggs consumed decreases. Individual daily observations are represented by orange points. The red solid line indicated the ordinary least squares linear regression trend. The orange ribbon represents the 95% confidence interval. 
+

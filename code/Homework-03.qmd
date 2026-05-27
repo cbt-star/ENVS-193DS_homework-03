@@ -65,6 +65,8 @@ ggplot(data = kelp, # use kelp data frame
 
 ### c. Check assumptions and run test
 
+**Run Test**
+
 ```{r}
 #| label: model
 
@@ -72,6 +74,13 @@ ggplot(data = kelp, # use kelp data frame
 # function: lm
 # formula: dependent ~ independent, data = data frame
 kelp_model <- lm(kelp_elong ~ temp_c, data = kelp) 
+```
+
+**Check Assumptions**
+
+```{r}
+#| label: asumptions
+
 # create 2x2 grid to show diagnostic plot
 par(mfrow = c(2,2))
 # show diagnostic plots
@@ -81,6 +90,8 @@ plot(kelp_model)
 The QQ residuals plot shows the data points following the line. This suggests the distribution of the residuals is normal. 
 The residuals vs. fitted and scale locations plots don't seem to show a pattern. The data seems to be randomly and evenly distributed  which indicates that the residuals are homoscedastic. 
 The residuals vs leverage plot does not show points outside of the dashed lines which indcates that there are no outliers influencing the model. 
+
+**Summary** 
 
 ```{r}
 #| label: summary
@@ -120,6 +131,7 @@ ggplot(data = kelp_predict, # use predictions data frame
   theme_bw()
 ```
 
+### d. Results communication
 
 
 

@@ -280,7 +280,7 @@ ggplot(data = egg_predict, # use predictions data frame
 
 ## Problem 4: Statistical critique 
 
-### a. 
+### a. Revisit and summarize
 
 The authors are using an ANOVA to assess the effect of clearing on floral resources available for pollinators and on pollinator communities. The ANOVA
 compares the variance within the cleared plots to the variance between the cleared and uncleared plots to assess whether or not there is a significant difference in floral resources and arthropods
@@ -296,8 +296,18 @@ knitr::include_graphics(here("data","pollinator-boxplot.png.png"))
 D) Simpson index for sampling-time (July, August) and treatment (C= cleared, NC=
 not cleared).”
 
-### b. 
+### b. Visual clarity
 
-The figure represents the statistics in the figure reasonably clearly. It is split up into 4 sections. Each section compares a difference dependent variable to the treatment. Within each section there are two facets - one that contains data for July and one that contains data from August. The axes are logically positioned. On the x-axis is the treatment (cleared or non-cleared land) and on the y-axis is A) pollinator abundance, B) pollinator richness, C) Shannon index, D) Simpson index. Basically, the figure is comparing the pollinator presence and the treatments. The boxplots show the median and interquartile rangebut no underlying data is shown
+The figure represents the statistics in the figure reasonably clearly. It is split up into 4 sections. Each section compares a difference dependent variable to the treatment. Within each section there are two facets - one that contains data for July and one that contains data from August. The axes are logically positioned. On the x-axis is the treatment (cleared or non-cleared land) and on the y-axis is A) pollinator abundance, B) pollinator richness, C) Shannon index, D) Simpson index. Basically, the figure is comparing the pollinator presence and the treatments. The boxplots show the median and interquartile range but no underlying data is shown
 
+### c. Aesthetic clarity
 
+I think the authors could have done a better job of minimizing visual clutter. There are 8 panels and 16 boxplots in the figure. They could have made the figure more concise and therefore the data to ink ration is not as low as it could be. 
+
+### d. Recommendations
+
+They should take off the gray background from the headers and the panel and instead make the text saying "July" or "August" bold.
+
+They should take off the "Treatment" label from the top two plots and just keep the label on the very bottom of the page. 
+
+They should take out the vertical grid lines because there are only two treatments so all the grid lines aren't adding to the figure. 

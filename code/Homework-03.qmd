@@ -202,8 +202,12 @@ ggplot(data = egg_data_clean,
        subtitle = "Date of last collection: 2026-05-26") +
   # change the theme
   theme_light() +
-# remove the legend
-theme(legend.position = "none")
+      # center title and make text bold
+theme(plot.title = element_text(hjust = 0.5,
+                                face = "bold"),
+      # center subtitle 
+      plot.subtitle = element_text(hjust = 0.5),  
+      legend.position = "none") # remove the legend
 ```
 
 **Figure 1.** Distribution of the daily number of eggs consumed on days with and without school. The green represents the number of eggs eaten on non-school days. The purple represents the number of eggs eaten on school days. Individuals data points are shown as circles in their respective color. The tops of both boxes represent the median and 75th percentile and the bottoms limits of the boxes represent the 25th percentile. The whiskers indicate points 1.5 times beyond the interquartile range. 
@@ -260,11 +264,16 @@ ggplot(data = egg_predict, # use predictions data frame
   # relabel x and y axes and add title
   labs(x = "Servings of Meat Eaten",
        y = "Number of Eggs Eaten",
-       title = "Increased meat consumption predicts decreased
-       egg consumption",
+       title = "Increased meat consumption predicts
+       decreased egg consumption",
        subtitle = "Date of last collection: 2026-05-26") + 
   # change theme
-  theme_bw()
+  theme_bw() +
+  # center title and make text bold
+  theme(plot.title = element_text(hjust = 0.5,
+                                face = "bold"),
+        # center subtitle
+        plot.subtitle = element_text(hjust = 0.5))
 ```
 
 **Figure 2.** Relationship between daily meat consumption and the number of eggs eaten. As the number of daily meat servings increase, the number of eggs consumed decreases. Individual daily observations are represented by orange points. The red solid line indicated the ordinary least squares linear regression trend. The orange ribbon represents the 95% confidence interval. 

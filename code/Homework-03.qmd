@@ -111,7 +111,11 @@ show(kelp_cor)
 
 To evaluate the strength of the relationship between temperature and kelp frond elongation, I used Pearson's correlation (r). This test is a good choice because both ocean temperature and elongation rate are continuous variables, and the diagnostic checks show that the data satisfies the assumptions of normality and linearity. I suspect a linear relationship between ocean temperature and kelp frond elongation rate
 
-I found a strong negative  relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.7, t(30) = -5.189, p < 0.001, $\alpha$ = 0.05).
+I found a strong negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.7, t(30) = -5.189, p < 0.001, $\alpha$ = 0.05).
+
+### e. 
+
+I would tell them that ocean temperature and the growth rate of kelp are related and that kelp fronds in high temperature ocean conditions tend to have a slower growth rate. I would also tell them that more tests need to be done in order to fully describe the relationship between temperature and growth rate.
 
 
 

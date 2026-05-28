@@ -297,6 +297,17 @@ knitr::include_graphics(here("data","affective_sketch.jpg"))
 knitr::include_graphics(here("data","egg-viz-draft.png"))
 ```
 
+### d. Artist statement
+
+For now I am showing that there is a negative relationship between how much meat I eat and how many eggs I eat. The meat I eat is almost always chicken so I've chosen to represent meat with a chicken cartoon drawing. I am showing how each day I try to consume a certain amount of protein which largely comes from eggs, yogurt and chicken. Usually, eating more meat means I eat less eggs because my protein quota is being met by other sources. 
+
+I had the affective visualization we looked at in lecture from The Pudding in my mind as inspiration. I really liked how they used a colorful background and animal cartoons to communicate their findings about the gender of anthropomorphized animals in children's books. I also liked the bright colors used in the Environmental Graphiti link and adopted some of that style while also adhering to my own linear thinking style.
+
+My work is currently a digital drawing that I did on my ipad. 
+
+I based my draft off of a plot I made with and meat consumption on the x-axis and egg consumption on the y-axis. I filled up the area under the line with eggs of decreasing sizes from left to right to show that egg consumption decreased. I filled up the area above the line with chickens of increasing size from left to right to show that meat consumption increases.  
+
+
 
 ## Problem 4: Statistical critique 
 

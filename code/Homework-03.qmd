@@ -278,6 +278,26 @@ ggplot(data = egg_predict, # use predictions data frame
 
 **Figure 2.** Relationship between daily meat consumption and the number of eggs eaten. As the number of daily meat servings increase, the number of eggs consumed decreases. Individual daily observations are represented by orange points. The red solid line indicated the ordinary least squares linear regression trend. The orange ribbon represents the 95% confidence interval. 
 
+
+## Problem 3: Affective visualization
+
+### a. In words
+
+My figure can look like a downwards sloping line that separates eggs below the line and chickens above the line. The size of the eggs decreases from left ot right while the size of the chickens increases from left to right. 
+
+### b. Sketch
+
+```{r}
+knitr::include_graphics(here("data","affective_sketch.jpg"))
+```
+
+### c. Draft
+
+```{r}
+knitr::include_graphics(here("data","egg-viz-draft.png"))
+```
+
+
 ## Problem 4: Statistical critique 
 
 ### a. Revisit and summarize

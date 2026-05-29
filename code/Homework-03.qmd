@@ -210,7 +210,7 @@ theme(plot.title = element_text(hjust = 0.5,
       legend.position = "none") # remove the legend
 ```
 
-**Figure 1.** Distribution of the daily number of eggs consumed on days with and without school. The green represents the number of eggs eaten on non-school days. The purple represents the number of eggs eaten on school days. Individuals data points are shown as circles in their respective color. The tops of both boxes represent the median and 75th percentile and the bottoms limits of the boxes represent the 25th percentile. The whiskers indicate points 1.5 times beyond the interquartile range. 
+**Figure 1.** Distribution of the daily number of eggs consumed on days with and without school. The green represents the number of eggs eaten on non-school days. The purple represents the number of eggs eaten on school days. Individuals data points are shown as circles in their respective color. The tops of both boxes represent the median and 75th percentile and the bottoms limits of the boxes represent the 25th percentile. The whiskers indicate points 1.5 times beyond the interquartile range.
 
 **Create egg linear model**
 
@@ -307,7 +307,9 @@ My work is currently a digital drawing that I did on my ipad.
 
 I based my draft off of a plot I made with and meat consumption on the x-axis and egg consumption on the y-axis. I filled up the area under the line with eggs of decreasing sizes from left to right to show that egg consumption decreased. I filled up the area above the line with chickens of increasing size from left to right to show that meat consumption increases.  
 
+### e. Materials to share in class
 
+My [slides](https://docs.google.com/presentation/d/1N49U7fu8f7dHXLFLvfLhEWF8C29lOUHKn8ATaYnJ-rA/edit?slide=id.g3eb4e245ffe_0_1218#slide=id.g3eb4e245ffe_0_1218). 
 
 ## Problem 4: Statistical critique 
 

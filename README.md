@@ -2,6 +2,7 @@
 Spring 2026
 # General information
 This repository is for homework 3
+This repo is mine (Github username - cbt-star)
 # Data and file information
 There is a `data` folder in which data files and images are stored.
 There is a `code` folder in which all code is stored.
